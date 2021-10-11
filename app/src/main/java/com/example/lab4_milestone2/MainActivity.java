@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                onRequestPermissionResult(1, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, new int[]{ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)});
             } else {
-
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) locationListener);
                 Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 if (location != null) {
